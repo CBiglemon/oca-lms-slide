@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Apprentice LMS - Product Overview | OCA</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        line-height: 1.6;
+        color: #1e293b;
+        overflow: hidden;
+      }
+
+      .slideshow-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: linear-gradient(
+          135deg,
+          #0369a1 0%,
+          #0284c7 50%,
+          #06b6d4 100%
+        );
+      }
+
+      /* Pacific Wave Pattern Background */
+      .slideshow-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.05;
+        z-index: 1;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath d='M0 10 Q 25 0, 50 10 T 100 10 L 100 20 L 0 20 Z' fill='%23ffffff'/%3E%3C/svg%3E");
+        background-repeat: repeat-x;
+        animation: wave-flow 15s linear infinite;
+      }
+
+      @keyframes wave-flow {
+        0% {
+          background-position-x: 0;
+        }
+        100% {
+          background-position-x: 100px;
+        }
+      }
+
+      /* Traditional Pacific Pattern Elements */
+      .pacific-pattern {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        opacity: 0.03;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23ffffff' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='25' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3Cpath d='M50,10 L90,50 L50,90 L10,50 Z' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3C/svg%3E")
+          no-repeat center;
+        background-size: contain;
+        z-index: 1;
+      }
+
+      .pacific-pattern.pattern-1 {
+        top: 10%;
+        right: 15%;
+        animation: float-rotate 20s ease-in-out infinite;
+      }
+
+      .pacific-pattern.pattern-2 {
+        bottom: 20%;
+        left: 10%;
+        animation: float-rotate 25s ease-in-out infinite reverse;
+      }
+
+      .pacific-pattern.pattern-3 {
+        top: 60%;
+        right: 5%;
+        animation: float-rotate 30s ease-in-out infinite;
+      }
+
+      @keyframes float-rotate {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0.03;
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+          opacity: 0.06;
+        }
+      }
+
+      .slide {
+        display: none;
+        width: 95%;
+        max-width: 1200px;
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 50px;
+        position: relative;
+        overflow-y: auto;
+        max-height: 85vh;
+        z-index: 10;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .slide.active {
+        display: block;
+        animation: slideIn 0.5s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .slide::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #0369a1, #0284c7, #06b6d4);
+        border-radius: 24px 24px 0 0;
+      }
+
+      h1 {
+        font-size: 3.5em;
+        color: #0f172a;
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      h2 {
+        font-size: 2.6em;
+        color: #0f172a;
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      h3 {
+        font-size: 1.6em;
+        color: #0f172a;
+        margin: 25px 0 15px 0;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 1.2em;
+        line-height: 1.7;
+        margin-bottom: 15px;
+        color: #475569;
+        text-align: center;
+      }
+
+      .oca-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #fef3c7, #fed7aa);
+        color: #92400e;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 25px;
+        border: 1px solid #fbbf24;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .oca-badge::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: shimmer 3s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .hero-content {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .mountain-metaphor {
+        background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+        border: 2px solid #0284c7;
+        border-radius: 20px;
+        padding: 35px;
+        margin: 30px 0;
+        text-align: center;
+      }
+
+      .mountain-visual {
+        font-size: 4em;
+        margin: 20px 0;
+        display: block;
+      }
+
+      .arrow-transform {
+        font-size: 3em;
+        color: #0369a1;
+        margin: 20px 0;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.7;
+          transform: scale(1.1);
+        }
+      }
+
+      .trek-visual {
+        font-size: 4em;
+        margin: 20px 0;
+        display: block;
+      }
+
+      .feature-highlight {
+        background: linear-gradient(135deg, #f8fafc, #ffffff);
+        border: 2px solid #e2e8f0;
+        border-left: 6px solid #0369a1;
+        border-radius: 16px;
+        padding: 25px;
+        margin: 25px 0;
+        transition: all 0.3s ease;
+      }
+
+      .feature-highlight:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(3, 105, 161, 0.15);
+        border-left-color: #06b6d4;
+      }
+
+      .feature-highlight h4 {
+        color: #0f172a;
+        font-size: 1.3em;
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+
+      .feature-highlight p {
+        color: #475569;
+        margin: 0;
+        text-align: left;
+        font-size: 1.1em;
+      }
+
+      /* iPhone Mockup Styles */
+      .phone-showcase {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 40px 0;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+
+      .iphone-mockup {
+        transition: all 0.8s ease;
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      .iphone-mockup.animate {
+        opacity: 1;
+        transform: translateY(-10px);
+        animation: phoneFloat 6s ease-in-out infinite;
+      }
+
+      .iphone-mockup:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .iphone-mockup:nth-child(2) {
+        animation-delay: 2s;
+      }
+      .iphone-mockup:nth-child(3) {
+        animation-delay: 4s;
+      }
+
+      @keyframes phoneFloat {
+        0%,
+        100% {
+          transform: translateY(-10px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(1deg);
+        }
+      }
+
+      .iphone-frame {
+        width: 220px;
+        height: 450px;
+        background: #1e293b;
+        border-radius: 45px;
+        padding: 8px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        position: relative;
+      }
+
+      .iphone-notch {
+        position: absolute;
+        top: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 22px;
+        background: #1e293b;
+        border-radius: 18px;
+        z-index: 10;
+      }
+
+      .iphone-screen {
+        width: 100%;
+        height: 100%;
+        background: #f8fafc;
+        border-radius: 38px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .screen-placeholder {
+        width: 80%;
+        height: 80%;
+        background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 2px dashed #94a3b8;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .screen-placeholder:hover {
+        background: linear-gradient(135deg, #0369a1, #0284c7);
+        color: white;
+        border-color: white;
+      }
+
+      .screen-placeholder h4 {
+        font-size: 1em;
+        margin-bottom: 8px;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .screen-placeholder p {
+        font-size: 0.8em;
+        text-align: center;
+        margin: 0;
+        opacity: 0.8;
+      }
+
+      .upload-icon {
+        font-size: 2em;
+        margin-bottom: 10px;
+        opacity: 0.6;
+      }
+
+      /* Actual image display */
+      .app-screenshot {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 38px;
+      }
+
+      /* SVG screen styles for each app section */
+      .home-screen {
+        width: 100%;
+        height: 100%;
+        background-image: url("images/Home.svg");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+        border-radius: 38px;
+      }
+
+      .evidence-screen {
+        width: 100%;
+        height: 100%;
+        background-image: url("images/Evidence.svg");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+        border-radius: 38px;
+      }
+
+      .tracking-screen {
+        width: 100%;
+        height: 100%;
+        background-image: url("images/Tracking.svg");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+        border-radius: 38px;
+      }
+
+      .assessment-screen {
+        width: 100%;
+        height: 100%;
+        background-image: url("images/Assessment.svg");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+        border-radius: 38px;
+      }
+
+      .quiz-screen {
+        width: 100%;
+        height: 100%;
+        background-image: url("images/Quiz.svg");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+        border-radius: 38px;
+      }
+
+      .schedule-screen {
+        width: 100%;
+        height: 100%;
+        background-image: url("images/Schedule.svg");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+        border-radius: 38px;
+      }
+
+      .phone-label {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 1em;
+        font-weight: 600;
+        color: #0369a1;
+      }
+
+      .navigation-hint {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: rgba(15, 23, 42, 0.9);
+        color: white;
+        padding: 12px 18px;
+        border-radius: 25px;
+        font-size: 0.85em;
+        z-index: 1000;
+        font-weight: 500;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .slide-counter {
+        position: fixed;
+        bottom: 25px;
+        left: 25px;
+        background: rgba(15, 23, 42, 0.9);
+        color: white;
+        padding: 12px 18px;
+        border-radius: 25px;
+        font-size: 0.85em;
+        z-index: 1000;
+        font-weight: 600;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .journey-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin: 30px 0;
+      }
+
+      .step-card {
+        background: linear-gradient(135deg, #f8fafc, #ffffff);
+        border: 2px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 25px;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .step-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #0369a1, #0284c7, #06b6d4);
+      }
+
+      .step-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(3, 105, 161, 0.15);
+        border-color: #0369a1;
+      }
+
+      .step-number {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #0369a1, #0284c7);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.3em;
+        margin: 0 auto 15px auto;
+      }
+
+      .step-card h4 {
+        color: #0f172a;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+        font-weight: 600;
+      }
+
+      .step-card p {
+        color: #475569;
+        text-align: left;
+        margin: 0;
+        font-size: 1em;
+      }
+
+      .pasifika-note {
+        background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+        border: 1px solid #0284c7;
+        border-radius: 16px;
+        padding: 20px 25px;
+        margin: 25px 0;
+        text-align: center;
+        font-style: italic;
+        color: #0369a1;
+        font-weight: 500;
+        font-size: 1.1em;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .slideshow-container {
+          padding: 15px;
+        }
+
+        .slide {
+          padding: 30px 25px;
+          width: 98%;
+          max-height: 92vh;
+        }
+
+        h1 {
+          font-size: 2.8em;
+        }
+
+        h2 {
+          font-size: 2em;
+        }
+
+        .phone-showcase {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .iphone-frame {
+          width: 200px;
+          height: 400px;
+        }
+
+        .journey-steps {
+          grid-template-columns: 1fr;
+        }
+
+        .mountain-visual,
+        .trek-visual {
+          font-size: 3em;
+        }
+
+        .arrow-transform {
+          font-size: 2.5em;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .slideshow-container {
+          padding: 10px;
+        }
+
+        .slide {
+          padding: 20px 15px;
+        }
+
+        h1 {
+          font-size: 2.2em;
+        }
+
+        h2 {
+          font-size: 1.6em;
+        }
+
+        .iphone-frame {
+          width: 180px;
+          height: 360px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slideshow-container">
+      <!-- Pacific patterns -->
+      <div class="pacific-pattern pattern-1"></div>
+      <div class="pacific-pattern pattern-2"></div>
+      <div class="pacific-pattern pattern-3"></div>
+
+      <!-- Slide 1: Introduction -->
+      <div class="slide active">
+        <div class="hero-content">
+          <div class="oca-badge">
+            Oceania Career Academy • Smart Apprentice LMS
+          </div>
+          <h1>Transforming Learning</h1>
+          <p>From an overwhelming mountain climb to an enjoyable trek</p>
+        </div>
+
+        <div class="mountain-metaphor">
+          <div class="mountain-visual">⛰️</div>
+          <h3>Training used to feel like climbing a mountain...</h3>
+          <p>
+            Overwhelming, steep, and students often felt lost or alone on their
+            journey to qualification.
+          </p>
+
+          <div class="arrow-transform">↓</div>
+
+          <div class="trek-visual">🥾 🌿 📱</div>
+          <h3>Now it's an enjoyable trek with Smart Apprentice</h3>
+          <p>
+            Guided, supported, with clear paths and encouragement every step of
+            the way.
+          </p>
+        </div>
+
+        <div class="pasifika-note">
+          Building Tomorrow's Workforce Today • Supporting our Pacific students
+          on their learning journey
+        </div>
+      </div>
+
+      <!-- Slide 2: What is Smart Apprentice -->
+      <div class="slide">
+        <h2>What is Smart Apprentice?</h2>
+
+        <div class="feature-highlight">
+          <h4>A Learning Management System Built for Our Students</h4>
+          <p>
+            Smart Apprentice is a mobile-first platform designed specifically to
+            support students through their vocational training. It transforms
+            the traditional overwhelming learning experience into a structured,
+            supportive journey.
+          </p>
+        </div>
+
+        <div class="journey-steps">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h4>Track Progress</h4>
+            <p>
+              Students can see exactly where they are in their qualification,
+              what they've completed, and what comes next.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h4>Submit Evidence</h4>
+            <p>
+              Capture photos and submit evidence of practical work directly from
+              their phone, anywhere, anytime.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h4>Get Feedback</h4>
+            <p>
+              Receive guidance from tutors and assessors with clear,
+              constructive feedback on their progress.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <h4>Stay Connected</h4>
+            <p>
+              Maintain connection with their learning community, tutors, and
+              support network throughout their journey.
+            </p>
+          </div>
+        </div>
+
+        <div class="pasifika-note">
+          Designed by our Pacific community, for our Pacific community
+        </div>
+      </div>
+
+      <!-- Slide 3: App Screenshots Showcase -->
+      <div class="slide">
+        <h2>Smart Apprentice In Action</h2>
+        <p>See how students interact with their learning journey</p>
+
+        <div class="phone-showcase">
+          <div class="iphone-mockup">
+            <div class="iphone-frame">
+              <div class="iphone-notch"></div>
+              <div class="iphone-screen">
+                <div class="home-screen"></div>
+              </div>
+            </div>
+            <div class="phone-label">Student Dashboard</div>
+          </div>
+
+          <div class="iphone-mockup">
+            <div class="iphone-frame">
+              <div class="iphone-notch"></div>
+              <div class="iphone-screen">
+                <div class="evidence-screen"></div>
+              </div>
+            </div>
+            <div class="phone-label">Evidence Submission</div>
+          </div>
+
+          <div class="iphone-mockup">
+            <div class="iphone-frame">
+              <div class="iphone-notch"></div>
+              <div class="iphone-screen">
+                <div class="tracking-screen"></div>
+              </div>
+            </div>
+            <div class="phone-label">Progress Tracking</div>
+          </div>
+        </div>
+
+        <div class="feature-highlight">
+          <h4>Real-World Application</h4>
+          <p>
+            Students use Smart Apprentice daily to document their practical
+            work, track their qualification progress, and stay connected with
+            their learning support team. The app transforms complex
+            qualification requirements into simple, achievable steps.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 4: The Problem It Solves -->
+      <div class="slide">
+        <h2>Solving Real Learning Challenges</h2>
+
+        <div class="journey-steps">
+          <div class="step-card">
+            <div class="step-number">❌</div>
+            <h4>Paper-Based Confusion</h4>
+            <p>
+              Students lost track of requirements, deadlines, and progress with
+              traditional paper-based systems.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">❌</div>
+            <h4>Isolation</h4>
+            <p>
+              Students felt disconnected from tutors and support when working
+              independently or at placement sites.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">❌</div>
+            <h4>Overwhelming Requirements</h4>
+            <p>
+              Complex qualification structures felt like climbing a steep
+              mountain with no clear path.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">❌</div>
+            <h4>Delayed Feedback</h4>
+            <p>
+              Slow communication meant students waited weeks for guidance on
+              their work and progress.
+            </p>
+          </div>
+        </div>
+
+        <div class="mountain-metaphor">
+          <h3>
+            Smart Apprentice transforms these challenges into opportunities
+          </h3>
+          <div class="arrow-transform">↓</div>
+          <p>
+            <strong>Clear pathways</strong> •
+            <strong>Instant connection</strong> •
+            <strong>Real-time feedback</strong> •
+            <strong>Progress visibility</strong>
+          </p>
+        </div>
+
+        <div class="pasifika-note">
+          Every feature designed to support our students' success and wellbeing
+        </div>
+      </div>
+
+      <!-- Slide 5: Key Features Deep Dive -->
+      <div class="slide">
+        <h2>Features That Make the Difference</h2>
+
+        <div class="feature-highlight">
+          <h4>📱 Mobile-First Design</h4>
+          <p>
+            Built for smartphones because that's what our students carry every
+            day. No need for laptops or desktop computers - everything works
+            perfectly on their phone.
+          </p>
+        </div>
+
+        <div class="feature-highlight">
+          <h4>📸 Photo Evidence Submission</h4>
+          <p>
+            Students can photograph their work instantly at job sites,
+            workshops, or anywhere they're practicing skills. Images are
+            automatically organized and linked to their qualification
+            requirements.
+          </p>
+        </div>
+
+        <div class="feature-highlight">
+          <h4>🎯 Progress Tracking</h4>
+          <p>
+            Clear visual indicators show exactly where students are in their
+            qualification journey. No more guessing or confusion about what's
+            been completed and what's still needed.
+          </p>
+        </div>
+
+        <div class="feature-highlight">
+          <h4>💬 Real-Time Communication</h4>
+          <p>
+            Direct connection with tutors and assessors for instant feedback,
+            questions, and support. Students never feel alone in their learning
+            journey.
+          </p>
+        </div>
+
+        <div class="feature-highlight">
+          <h4>🌟 Competency-Based Learning</h4>
+          <p>
+            Focus on demonstrating real skills and knowledge rather than just
+            completing assignments. Students progress when they prove
+            competency, not just attendance.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 6: More App Screenshots -->
+      <div class="slide">
+        <h2>Additional App Features</h2>
+        <p>More ways Smart Apprentice supports student success</p>
+
+        <div class="phone-showcase">
+          <div class="iphone-mockup">
+            <div class="iphone-frame">
+              <div class="iphone-notch"></div>
+              <div class="iphone-screen">
+                <div class="assessment-screen"></div>
+              </div>
+            </div>
+            <div class="phone-label">Assessment Review</div>
+          </div>
+
+          <div class="iphone-mockup">
+            <div class="iphone-frame">
+              <div class="iphone-notch"></div>
+              <div class="iphone-screen">
+                <div class="quiz-screen"></div>
+              </div>
+            </div>
+            <div class="phone-label">Interactive Quiz</div>
+          </div>
+
+          <div class="iphone-mockup">
+            <div class="iphone-frame">
+              <div class="iphone-notch"></div>
+              <div class="iphone-screen">
+                <div class="schedule-screen"></div>
+              </div>
+            </div>
+            <div class="phone-label">Schedule & Deadlines</div>
+          </div>
+        </div>
+
+        <div class="feature-highlight">
+          <h4>Holistic Learning Support</h4>
+          <p>
+            Smart Apprentice isn't just about submitting work - it's a complete
+            ecosystem that supports every aspect of the student learning
+            experience, from initial enrollment through to graduation and
+            beyond.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 8: What We Haven't Shown You Yet -->
+      <div class="slide">
+        <h2>But Wait... There's So Much More</h2>
+
+        <div class="mountain-metaphor">
+          <div class="trek-visual">🔍 📱 ✨</div>
+          <h3>What you've seen is just the beginning</h3>
+          <p>
+            Smart Apprentice isn't just one app - it's a complete ecosystem
+            designed for every person involved in vocational education.
+          </p>
+        </div>
+
+        <div class="feature-highlight">
+          <h4>Student Journaling & Reflection</h4>
+          <p>
+            Students document their learning journey with integrated journaling
+            tools, reflection prompts, and personal growth tracking that goes
+            beyond just assignments.
+          </p>
+        </div>
+
+        <div class="journey-steps">
+          <div class="step-card">
+            <div class="step-number">👤</div>
+            <h4>Student App</h4>
+            <p>
+              What you've seen - learning, progress tracking, evidence
+              submission, and personal journaling.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">👨‍🏫</div>
+            <h4>Tutor App</h4>
+            <p>
+              Class management, student progress monitoring, assignment
+              creation, and mentoring tools.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">✅</div>
+            <h4>Assessor App</h4>
+            <p>
+              Evidence review workflows, competency assessment, certification
+              tracking, and quality assurance.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">🏢</div>
+            <h4>Employer App</h4>
+            <p>
+              Workplace integration, student placement management, skill
+              verification, and industry feedback.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-highlight">
+          <h4>Complete Learning Ecosystem</h4>
+          <p>
+            Every stakeholder in vocational education gets their own tailored
+            interface and tools, all connected seamlessly to support student
+            success from enrollment through to career placement.
+          </p>
+        </div>
+
+        <div class="mountain-metaphor">
+          <div class="arrow-transform">🌐</div>
+          <h3>Four Apps. One Mission.</h3>
+          <p>
+            <strong>Supporting our Pacific students</strong> with technology
+            that connects everyone involved in their educational journey.
+          </p>
+        </div>
+
+        <div class="pasifika-note">
+          This is just the preview - Smart Apprentice transforms how entire
+          learning communities work together to build tomorrow's workforce
+        </div>
+      </div>
+
+      <!-- Slide 7: Impact & Vision -->
+      <div class="slide">
+        <h2>Our Vision for Student Success</h2>
+
+        <div class="mountain-metaphor">
+          <div class="trek-visual">🌅 🎓 🌺</div>
+          <h3>From Struggle to Success</h3>
+          <p>
+            Smart Apprentice transforms the learning experience from an
+            overwhelming mountain climb into an enjoyable, supported trek toward
+            qualification and career success.
+          </p>
+        </div>
+
+        <div class="journey-steps">
+          <div class="step-card">
+            <div class="step-number">📈</div>
+            <h4>Higher Completion Rates</h4>
+            <p>
+              Students stay engaged and motivated with clear progress indicators
+              and constant support throughout their journey.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">⚡</div>
+            <h4>Faster Progression</h4>
+            <p>
+              Real-time feedback and streamlined processes help students move
+              through their qualifications more efficiently.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">🤝</div>
+            <h4>Stronger Connections</h4>
+            <p>
+              Enhanced communication between students, tutors, and employers
+              creates a supportive learning community.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">🌟</div>
+            <h4>Better Outcomes</h4>
+            <p>
+              Students graduate with confidence, real skills, and strong
+              employment prospects in their chosen field.
+            </p>
+          </div>
+        </div>
+
+        <div class="pasifika-note">
+          Empowering our Pacific students to achieve their career dreams with
+          technology that understands and supports their journey
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation hints -->
+    <div class="navigation-hint">Use arrow keys ← → to navigate</div>
+
+    <div class="slide-counter">
+      <span id="current-slide">1</span> / <span id="total-slides">8</span>
+    </div>
+
+    <!-- Hidden file input for image uploads -->
+    <input
+      type="file"
+      id="imageUpload"
+      accept="image/*"
+      style="display: none"
+    />
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+      const totalSlides = slides.length;
+
+      document.getElementById("total-slides").textContent = totalSlides;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("active", i === index);
+        });
+        document.getElementById("current-slide").textContent = index + 1;
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      // Keyboard navigation only
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowRight" || event.key === " ") {
+          event.preventDefault();
+          nextSlide();
+        } else if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          prevSlide();
+        }
+      });
+
+      // Touch navigation for mobile
+      let startX = 0;
+      let endX = 0;
+
+      document.addEventListener("touchstart", function (event) {
+        startX = event.changedTouches[0].screenX;
+      });
+
+      document.addEventListener("touchend", function (event) {
+        endX = event.changedTouches[0].screenX;
+        handleGesture();
+      });
+
+      function handleGesture() {
+        if (endX < startX - 50) {
+          nextSlide();
+        }
+        if (endX > startX + 50) {
+          prevSlide();
+        }
+      }
+
+      // Image upload functionality
+      let currentPlaceholder = null;
+      let currentImageType = "";
+
+      function uploadImage(placeholder, imageType) {
+        currentPlaceholder = placeholder;
+        currentImageType = imageType;
+        document.getElementById("imageUpload").click();
+      }
+
+      document
+        .getElementById("imageUpload")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (file && currentPlaceholder) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              // Replace placeholder with actual image
+              const screen = currentPlaceholder.parentElement;
+              const img = document.createElement("img");
+              img.src = e.target.result;
+              img.className = "app-screenshot";
+              img.alt = `Smart Apprentice ${currentImageType} screen`;
+
+              // Replace the placeholder with the image
+              screen.innerHTML = "";
+              screen.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+          }
+
+          // Reset file input
+          this.value = "";
+        });
+
+      // Initialize animations when slides come into view
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate");
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+
+      document.querySelectorAll(".iphone-mockup").forEach((phone) => {
+        observer.observe(phone);
+      });
+
+      // Initialize first slide
+      showSlide(0);
+
+      // Add staggered animation to phone mockups
+      setTimeout(() => {
+        document.querySelectorAll(".iphone-mockup").forEach((phone, index) => {
+          setTimeout(() => {
+            phone.classList.add("animate");
+          }, index * 300);
+        });
+      }, 500);
+
+      // Pacific wave animation enhancement
+      const patterns = document.querySelectorAll(".pacific-pattern");
+      patterns.forEach((pattern, index) => {
+        pattern.style.animationDelay = `${index * 3}s`;
+      });
+
+      // Make upload function global
+      window.uploadImage = uploadImage;
+    </script>
+  </body>
+</html>
